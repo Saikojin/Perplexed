@@ -1,0 +1,545 @@
+INFO:     Will watch for changes in these directories: ['D:\\DevWorkspace\\Roddle\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+INFO:     Started reloader process [58148] using WatchFiles
+2026-01-03 17:45:42,329 - server - INFO - !!! SERVER.PY LOADED - LOGGING TO server_debug.log !!!
+!!! SERVER.PY LOADED - VERSION: NO_FALLBACKS_ENABLED !!!
+2026-01-03 17:45:42,329 - server - INFO - LLM_MODE set to: ollama
+2026-01-03 17:45:42,330 - server - INFO - OLLAMA_MODEL set to: 'neural-chat'
+INFO:     Started server process [50976]
+INFO:     Waiting for application startup.
+2026-01-03 17:45:42,461 - server - INFO - Connecting to MongoDB on startup...
+2026-01-03 17:45:42,461 - server - INFO - MongoDB URL: mongodb://localhost:27017, Database: roddle
+2026-01-03 17:45:42,675 - server - INFO - ModelManager initialized
+INFO:     Application startup complete.
+INFO:     127.0.0.1:57776 - "OPTIONS /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57578 - "OPTIONS /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57578 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57776 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57776 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57578 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57578 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57776 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49790 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49793 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:50150 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50153 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:63265 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63265 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57856 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57856 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57856 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64208 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64208 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57856 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64767 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:52497 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52497 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52497 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57770 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57770 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57341 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:56613 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:55297 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53736 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53736 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:52828 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52828 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52828 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62491 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62491 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52828 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59118 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59118 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59118 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59118 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59118 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59118 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61234 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61234 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61234 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61234 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61234 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61234 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61848 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61848 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61848 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61848 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61848 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61848 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55490 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55490 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55490 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55490 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55490 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55490 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62837 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62837 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62837 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62837 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62837 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62837 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50789 - "OPTIONS /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54508 - "OPTIONS /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50583 - "OPTIONS /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54773 - "OPTIONS /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50583 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54773 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50583 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54508 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62020 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62020 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62020 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62020 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62020 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52045 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52045 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62020 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56019 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54987 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56019 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54987 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54987 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56019 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56019 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54987 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54987 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56019 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58385 - "OPTIONS /api/riddle/generate HTTP/1.1" 200 OK
+2026-01-03 18:46:11,016 - server - INFO - Generating new unique riddle for user 20767a69-5a60-48d0-b3c3-9ba4397e5423...
+[CACHE MISS] Generating Personal Riddle for User: test60
+2026-01-03 18:46:11,016 - model_manager - INFO - Generated Prompt: Create a medium difficulty riddle. The answer must be a single word (4-8 letters). Make it clever but not too hard. 
+[OllamaLLM] Checked availability. Available models: ['neural-chat:latest', 'mistral:latest']
+2026-01-03 18:46:11,022 - model_manager - INFO - Attempts generation with neural-chat...
+2026-01-03 18:46:11,022 - ollama_llm - INFO - POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] Received response status: 200
+[OllamaLLM] Received data length: 162
+[OllamaLLM] RAW RESPONSE TEXT: >>>RIDDLE: It holds the key to staying cool during summer and controls ice production in your house - what do you call this cold-related device?
+ANSWER: refrigerator<<<
+INFO:     127.0.0.1:58385 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50916 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+2026-01-03 18:48:15,916 - server - INFO - Generating new unique riddle for user 20767a69-5a60-48d0-b3c3-9ba4397e5423...
+[CACHE MISS] Generating Personal Riddle for User: test60
+2026-01-03 18:48:15,917 - model_manager - INFO - Generated Prompt: Create a very easy riddle for children. The answer must be a single common word (3-6 letters). Make it simple and fun. 
+[OllamaLLM] Checked availability. Available models: ['neural-chat:latest', 'mistral:latest']
+2026-01-03 18:48:15,922 - model_manager - INFO - Attempts generation with neural-chat...
+2026-01-03 18:48:15,922 - ollama_llm - INFO - POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] Received response status: 200
+[OllamaLLM] Received data length: 201
+[OllamaLLM] RAW RESPONSE TEXT: >>>RIDDLE: This colorful character often lives under the sea and has lots of friends. If you see just one pair, you may call them by their name that's short for two. Who are we talking about?
+ANSWER: Nemo<<<
+INFO:     127.0.0.1:50916 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53880 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+2026-01-03 18:48:56,609 - server - INFO - Resuming existing personalized riddle for user 20767a69-5a60-48d0-b3c3-9ba4397e5423
+[CACHE HIT] Resuming Personal Riddle for User: test60
+INFO:     127.0.0.1:53880 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53880 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+2026-01-03 18:49:01,314 - server - INFO - Generating new unique riddle for user 20767a69-5a60-48d0-b3c3-9ba4397e5423...
+[CACHE MISS] Generating Personal Riddle for User: test60
+2026-01-03 18:49:01,315 - model_manager - INFO - Generated Prompt: Create a challenging riddle. The answer must be a single word (5-10 letters). Make it require creative thinking. 
+[OllamaLLM] Checked availability. Available models: ['neural-chat:latest', 'mistral:latest']
+2026-01-03 18:49:01,319 - model_manager - INFO - Attempts generation with neural-chat...
+2026-01-03 18:49:01,319 - ollama_llm - INFO - POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] Received response status: 200
+[OllamaLLM] Received data length: 159
+[OllamaLLM] RAW RESPONSE TEXT: >>>RIDDLE: It's the last letter of December and can represent a large, landlocked country, but not in its usual form. Which word are we referring to?
+ANSWER: Serb<<<
+INFO:     127.0.0.1:53880 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55739 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55739 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57015 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55739 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57015 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59102 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57467 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57467 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59102 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59102 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57467 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49756 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49756 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65235 - "OPTIONS /api/riddle/generate HTTP/1.1" 200 OK
+2026-01-03 18:57:02,851 - server - INFO - Resuming existing personalized riddle for user 20767a69-5a60-48d0-b3c3-9ba4397e5423
+[CACHE HIT] Resuming Personal Riddle for User: test60
+INFO:     127.0.0.1:65235 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65235 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+2026-01-03 18:57:07,230 - server - INFO - Resuming existing personalized riddle for user 20767a69-5a60-48d0-b3c3-9ba4397e5423
+[CACHE HIT] Resuming Personal Riddle for User: test60
+INFO:     127.0.0.1:65235 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50233 - "OPTIONS /api/riddle/guess HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50233 - "POST /api/riddle/guess HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50233 - "POST /api/riddle/guess HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59029 - "POST /api/riddle/guess HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63758 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63758 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63758 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63758 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63758 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63758 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49351 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49351 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:63099 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63099 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63099 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63099 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63099 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62606 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62606 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62606 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62606 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62606 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62606 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52304 - "OPTIONS /api/riddle/generate HTTP/1.1" 200 OK
+2026-01-03 19:48:03,373 - server - INFO - Generating new unique riddle for user a3b8810f-6faf-4307-8438-ab8a7b1eacf5...
+[CACHE MISS] Generating Personal Riddle for User: test13
+2026-01-03 19:48:03,373 - model_manager - INFO - Generated Prompt: Create a very easy riddle for children. The answer must be a single common word (3-6 letters). Make it simple and fun. 
+[OllamaLLM] Checked availability. Available models: ['neural-chat:latest', 'mistral:latest']
+2026-01-03 19:48:03,381 - model_manager - INFO - Attempts generation with neural-chat...
+2026-01-03 19:48:03,381 - ollama_llm - INFO - POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] Received response status: 200
+[OllamaLLM] Received data length: 81
+[OllamaLLM] RAW RESPONSE TEXT: >>>RIDDLE: What makes it colorful like a rainbow when the sun hits it?
+ANSWER: prism<<<
+INFO:     127.0.0.1:52304 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50235 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50235 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50235 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50235 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50235 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50235 - "OPTIONS /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49797 - "OPTIONS /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50235 - "OPTIONS /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52276 - "OPTIONS /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49797 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50235 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49797 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50235 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55225 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55225 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55225 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55225 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55225 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55225 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55225 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57749 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57749 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57749 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57749 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57749 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57749 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63810 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63810 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57674 - "OPTIONS /api/riddle/generate HTTP/1.1" 200 OK
+2026-01-03 19:50:22,342 - server - INFO - Resuming existing personalized riddle for user 20767a69-5a60-48d0-b3c3-9ba4397e5423
+[CACHE HIT] Resuming Personal Riddle for User: test60
+INFO:     127.0.0.1:57674 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54807 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54807 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54807 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54807 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54807 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54807 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54773 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54773 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54773 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54773 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54773 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54773 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56437 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56437 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56437 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56437 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56437 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56437 - "OPTIONS /api/riddle/generate HTTP/1.1" 200 OK
+2026-01-03 19:56:04,898 - server - INFO - Resuming existing personalized riddle for user a3b8810f-6faf-4307-8438-ab8a7b1eacf5
+[CACHE HIT] Resuming Personal Riddle for User: test13
+INFO:     127.0.0.1:52744 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "OPTIONS /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59233 - "OPTIONS /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "OPTIONS /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59233 - "OPTIONS /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59233 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63669 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59233 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62940 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62940 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62940 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62940 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62940 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62940 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62940 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62940 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56045 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56045 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56045 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56045 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56045 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56045 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60624 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60624 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60624 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60624 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60624 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60624 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58388 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58388 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:63224 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63224 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63224 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63224 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63224 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63224 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64167 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64167 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64167 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64167 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64167 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64167 - "OPTIONS /api/riddle/generate HTTP/1.1" 200 OK
+2026-01-03 20:01:30,230 - server - INFO - Generating new unique riddle for user 364a7a57-63a8-47e4-a2e6-d747946cd3db...
+[CACHE MISS] Generating Personal Riddle for User: user-077d327b
+2026-01-03 20:01:30,230 - model_manager - INFO - Generated Prompt: Create a very easy riddle for children. The answer must be a single common word (3-6 letters). Make it simple and fun. 
+[OllamaLLM] Checked availability. Available models: ['neural-chat:latest', 'mistral:latest']
+2026-01-03 20:01:30,236 - model_manager - INFO - Attempts generation with neural-chat...
+2026-01-03 20:01:30,237 - ollama_llm - INFO - POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] Received response status: 200
+[OllamaLLM] Received data length: 171
+[OllamaLLM] RAW RESPONSE TEXT: >>>RIDDLE: A place where people go to see things, sometimes big like elephants or small like bugs, but it's not a living being itself. What is this special place?
+ANSWER: zoo<<<
+INFO:     127.0.0.1:54800 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56305 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56305 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56305 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56305 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56305 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56305 - "OPTIONS /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60510 - "OPTIONS /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56305 - "OPTIONS /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60510 - "OPTIONS /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60510 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56305 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60510 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56305 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56158 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56158 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56158 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56158 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56158 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56158 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57529 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57529 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57529 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57529 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57529 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57529 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50729 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50729 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50729 - "OPTIONS /api/riddle/generate HTTP/1.1" 200 OK
+2026-01-03 20:03:10,713 - server - INFO - Resuming existing personalized riddle for user 20767a69-5a60-48d0-b3c3-9ba4397e5423
+[CACHE HIT] Resuming Personal Riddle for User: test60
+INFO:     127.0.0.1:50729 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50729 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+2026-01-03 20:03:14,359 - server - INFO - Resuming existing personalized riddle for user 20767a69-5a60-48d0-b3c3-9ba4397e5423
+[CACHE HIT] Resuming Personal Riddle for User: test60
+INFO:     127.0.0.1:50729 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50729 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+2026-01-03 20:03:16,305 - server - INFO - Resuming existing personalized riddle for user 20767a69-5a60-48d0-b3c3-9ba4397e5423
+[CACHE HIT] Resuming Personal Riddle for User: test60
+INFO:     127.0.0.1:50729 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50729 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+2026-01-03 20:03:18,192 - server - INFO - Resuming existing personalized riddle for user 20767a69-5a60-48d0-b3c3-9ba4397e5423
+[CACHE HIT] Resuming Personal Riddle for User: test60
+INFO:     127.0.0.1:50729 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50822 - "OPTIONS /api/riddle/guess HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50822 - "POST /api/riddle/guess HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50822 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+2026-01-03 20:03:30,737 - server - INFO - Resuming existing personalized riddle for user 20767a69-5a60-48d0-b3c3-9ba4397e5423
+[CACHE HIT] Resuming Personal Riddle for User: test60
+INFO:     127.0.0.1:50822 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59995 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+2026-01-03 20:06:40,827 - server - INFO - Generating new unique riddle for user be10ca09-6b42-4fde-89a1-cec19ef1d1f1...
+[CACHE MISS] Generating Personal Riddle for User: test61
+2026-01-03 20:06:40,827 - model_manager - INFO - Generated Prompt: Create a very easy riddle for children. The answer must be a single common word (3-6 letters). Make it simple and fun. 
+[OllamaLLM] Checked availability. Available models: ['neural-chat:latest', 'mistral:latest']
+2026-01-03 20:06:40,832 - model_manager - INFO - Attempts generation with neural-chat...
+2026-01-03 20:06:40,832 - ollama_llm - INFO - POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] Received response status: 200
+[OllamaLLM] Received data length: 71
+[OllamaLLM] RAW RESPONSE TEXT: >>>RIDDLE: What can you hold that is always full of smiles?
+ANSWER: cookie<<<
+INFO:     127.0.0.1:50095 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+2026-01-03 20:06:51,875 - server - INFO - Generating new unique riddle for user be10ca09-6b42-4fde-89a1-cec19ef1d1f1...
+[CACHE MISS] Generating Personal Riddle for User: test61
+2026-01-03 20:06:51,875 - model_manager - INFO - Generated Prompt: Create a medium difficulty riddle. The answer must be a single word (4-8 letters). Make it clever but not too hard. 
+[OllamaLLM] Checked availability. Available models: ['neural-chat:latest', 'mistral:latest']
+2026-01-03 20:06:51,880 - model_manager - INFO - Attempts generation with neural-chat...
+2026-01-03 20:06:51,880 - ollama_llm - INFO - POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] Received response status: 200
+[OllamaLLM] Received data length: 172
+[OllamaLLM] RAW RESPONSE TEXT: >>>RIDDLE: A famous place named after me lies within each of us - but never leaves our home - yet many travel far to see the real one. It's a city and my name.
+ANSWER: Atlanta<<<
+INFO:     127.0.0.1:50095 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52016 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+2026-01-03 20:07:08,091 - server - INFO - Generating new unique riddle for user be10ca09-6b42-4fde-89a1-cec19ef1d1f1...
+[CACHE MISS] Generating Personal Riddle for User: test61
+2026-01-03 20:07:08,091 - model_manager - INFO - Generated Prompt: Create a challenging riddle. The answer must be a single word (5-10 letters). Make it require creative thinking. 
+[OllamaLLM] Checked availability. Available models: ['neural-chat:latest', 'mistral:latest']
+2026-01-03 20:07:08,096 - model_manager - INFO - Attempts generation with neural-chat...
+2026-01-03 20:07:08,096 - ollama_llm - INFO - POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] Received response status: 200
+[OllamaLLM] Received data length: 171
+[OllamaLLM] RAW RESPONSE TEXT: >>>RIDDLE: This is the place that holds water, but you won't find any in it. It usually has three sides and comes in many shapes. What am I referring to?
+ANSWER: swimmingpool<<<
+INFO:     127.0.0.1:52016 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62295 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+2026-01-03 20:08:26,105 - server - INFO - Resuming existing personalized riddle for user be10ca09-6b42-4fde-89a1-cec19ef1d1f1
+[CACHE HIT] Resuming Personal Riddle for User: test61
+INFO:     127.0.0.1:62295 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49640 - "POST /api/riddle/guess HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51976 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57986 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57986 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57986 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57986 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57986 - "OPTIONS /api/riddle/generate HTTP/1.1" 200 OK
+2026-01-03 20:13:12,891 - server - INFO - Generating new unique riddle for user fb64e4c7-6e2f-445e-a936-0b53ef2e76f6...
+[CACHE MISS] Generating Personal Riddle for User: test50
+2026-01-03 20:13:12,891 - model_manager - INFO - Generated Prompt: Create a very easy riddle for children. The answer must be a single common word (3-6 letters). Make it simple and fun. 
+2026-01-03 20:13:12,891 - model_manager - INFO - Switching model to neural-chat:latest (default: neural-chat)
+[OllamaLLM] Checked availability. Available models: ['neural-chat:latest', 'mistral:latest']
+2026-01-03 20:13:12,895 - model_manager - INFO - Attempts generation with neural-chat:latest...
+2026-01-03 20:13:12,895 - ollama_llm - INFO - POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat:latest
+[OllamaLLM] POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat:latest
+[OllamaLLM] Received response status: 200
+[OllamaLLM] Received data length: 139
+[OllamaLLM] RAW RESPONSE TEXT: >>>RIDDLE: We are made of ice, float in water, and can be fun to play with, but we melt when it gets warm outside. What am I?
+ANSWER: popsicle<<<
+INFO:     127.0.0.1:57986 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60170 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60170 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60170 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60170 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60170 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60170 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54070 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54070 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:51092 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51092 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51092 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51092 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51092 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51092 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50657 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50657 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50657 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50657 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50657 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50657 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58138 - "OPTIONS /api/riddle/generate HTTP/1.1" 200 OK
+2026-01-03 20:16:19,776 - server - INFO - Generating new unique riddle for user 4ef43714-8416-4853-a5a4-e2fa722c1bc3...
+[CACHE MISS] Generating Personal Riddle for User: user-6d50ca25
+2026-01-03 20:16:19,776 - model_manager - INFO - Generated Prompt: Create a very easy riddle for children. The answer must be a single common word (3-6 letters). Make it simple and fun. 
+[OllamaLLM] Checked availability. Available models: ['neural-chat:latest', 'mistral:latest']
+2026-01-03 20:16:19,782 - model_manager - INFO - Attempts generation with neural-chat...
+2026-01-03 20:16:19,782 - ollama_llm - INFO - POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] Received response status: 200
+[OllamaLLM] Received data length: 161
+[OllamaLLM] RAW RESPONSE TEXT: >>>RIDDLE: This funny-looking creature makes sounds in different shapes and colors, and everyone loves to say its name. What's the simple word for it?
+ANSWER: kanga<<<
+INFO:     127.0.0.1:58138 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63650 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63650 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63650 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63650 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63650 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63650 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63213 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63213 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63213 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63213 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63213 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63213 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63213 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62380 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62380 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62380 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62380 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62380 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56994 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56994 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56994 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56994 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56994 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56994 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64089 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64089 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:51199 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51199 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51199 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51199 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51199 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51199 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51199 - "OPTIONS /api/riddle/generate HTTP/1.1" 200 OK
+2026-01-03 20:19:17,602 - server - INFO - Generating new unique riddle for user 1d5bbd57-a4e9-4aa0-b1df-015632651cd4...
+[CACHE MISS] Generating Personal Riddle for User: user-b2cb4a2c
+2026-01-03 20:19:17,602 - model_manager - INFO - Generated Prompt: Create a very easy riddle for children. The answer must be a single common word (3-6 letters). Make it simple and fun. 
+[OllamaLLM] Checked availability. Available models: ['neural-chat:latest', 'mistral:latest']
+2026-01-03 20:19:17,606 - model_manager - INFO - Attempts generation with neural-chat...
+2026-01-03 20:19:17,607 - ollama_llm - INFO - POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] POSTing to Ollama: http://localhost:11434/api/generate with model neural-chat
+[OllamaLLM] Received response status: 200
+[OllamaLLM] Received data length: 97
+[OllamaLLM] RAW RESPONSE TEXT: >>>RIDDLE: It's something you can climb on but not eat for dinner, it begins with 'T'.
+ANSWER: Table<<<
+INFO:     127.0.0.1:56857 - "POST /api/riddle/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52241 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52241 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52241 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52241 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52241 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52241 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52241 - "OPTIONS /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61997 - "OPTIONS /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57219 - "OPTIONS /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54176 - "OPTIONS /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54176 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57219 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54176 - "GET /api/leaderboard/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57219 - "GET /api/leaderboard/friends HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55018 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55018 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55018 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55018 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55018 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55018 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55018 - "GET /api/models/available HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58206 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58206 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58206 - "OPTIONS /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58206 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58206 - "GET /api/riddles/daily-status HTTP/1.1" 200 OK
