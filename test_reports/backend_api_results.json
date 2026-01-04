@@ -1,0 +1,78 @@
+{
+  "timestamp": "2025-10-25T05:35:06.695034",
+  "total_tests": 14,
+  "passed_tests": 14,
+  "success_rate": "100.0%",
+  "test_results": [
+    {
+      "test": "User Registration",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "User Login",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Get User Profile",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Generate Easy Riddle",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Generate Medium Riddle",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Generate Hard Riddle",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Submit Riddle Guess",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Premium Unlock (Mock)",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Generate Very Hard Riddle (Premium)",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Global Leaderboard",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Friends Leaderboard",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Add Friend",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "User Statistics",
+      "success": true,
+      "details": ""
+    },
+    {
+      "test": "Invalid Token Access",
+      "success": true,
+      "details": ""
+    }
+  ]
+}

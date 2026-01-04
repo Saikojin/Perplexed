@@ -1,0 +1,154 @@
+# Riddle Master - Development Context
+
+## Current Status (Dec 10, 2024)
+
+✅ **SYSTEM WORKING** - Multi-user riddle game fully functional with Ollama integration
+
+### What's Working
+- ✅ Backend connects to MongoDB and Ollama successfully
+- ✅ **Ollama Integration**: Riddles generated via local AI running in Docker
+- ✅ **Race Condition Fixed**: Backend now correctly generates only 5 riddles per day (per difficulty), preventing duplicate "10 riddles" bug
+- ✅ **Startup Scripts**: `start.bat` and `dev.bat` fully functional with background execution and logging
+- ✅ Frontend compiles and runs without errors
+- ✅ Multiple users can register and login
+- ✅ Daily riddle system works (one riddle per difficulty per day)
+- ✅ Leaderboards track scores
+- ✅ Premium system unlocks Very Hard and Insane difficulties
+- ✅ Comprehensive logging with timestamps
+- ✅ Auto-restart development environment with `dev.bat`
+
+## Recent Changes (Most Recent First)
+
+### Dec 10, 2024 - Race Condition Fix & Ollama Verification (RESOLVED)
+
+**Problem**: 
+- Users reported seeing **10 riddles** instead of 5 for a single day.
+- Logs showed multiple "CACHE MISS" events triggering simultaneous generations.
+- Startup script `start.bat` had a path variable issue preventing frontend launch.
+
+**Solution**:
+1. **Global Lock for Generation**: Implemented `asyncio.Lock()` in `backend/server.py` to ensure only one riddle generation process runs at a time.
+2. **Fixed `start.bat`**: Added `FRONTEND_DIR` variable to correctly locate start scripts.
+3. **Verified Ollama**: Confirmed AI generation is working correctly (no longer using Mock LLM).
+
+**Result**: 
+- Daily riddles generate exactly once per day (5 difficulties).
+- Frontend launches correctly in background.
+- Logs show successful Ollama communication.
+
+### Dec 9, 2024 - Logging Script Fixes (RESOLVED)
+
+**Problem**: Logging wrapper scripts failed with "path not found" errors
+
+**Solution**:
+- Fixed `backend/start-backend-with-log.bat` and `frontend/start-frontend-with-log.bat` to correctly pipe output using PowerShell `Tee-Object`.
+- Updated `dev.bat` to use these wrappers.
+
+**Result**: All logs now show timestamps correctly and persist to file.
+
+### Dec 9, 2024 - Comprehensive Logging Implementation
+
+**Added**:
+- Backend logging with timestamps
+- Frontend console logs
+- Log wrapper scripts (`start-backend-with-log.bat`, etc.)
+
+## Architecture
+
+### Services
+- **MongoDB** (Docker): Port 27017 - User data, riddles, scores
+- **Ollama** (Docker): Port 11434 - AI riddle generation (neural-chat model)
+- **Backend** (FastAPI): Port 8001 - REST API, authentication, game logic
+- **Frontend** (React): Port 3000 - User interface
+
+### Tech Stack
+- **Backend**: Python 3.13, FastAPI, Motor (async MongoDB), JWT auth
+- **Frontend**: React 18, Tailwind CSS, shadcn/ui, React Router
+- **Database**: MongoDB 5.0+
+- **AI**: Ollama (neural-chat 7B)
+- **Security**: JWT tokens, Fernet encryption, bcrypt password hashing
+
+### Data Flow
+1. User registers/logs in → JWT token issued
+2. User selects difficulty → Backend checks daily progress
+3. **Check Cache**: If riddle exists for today, serve it.
+4. **Cache Miss**: If not, acquire Lock → Generate via Ollama → Encrypt & Save to MongoDB.
+5. User submits guess → Backend validates and scores.
+
+## Development Workflow
+
+### Starting the Application (Windows)
+```batch
+# Background Mode (Recommended for playing)
+.\start.bat
+
+# Development Mode (Interactive logs)
+.\dev.bat
+```
+
+### Accessing the Application
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8001/docs
+- Backend Logs: `backend\backend.log` (and `server_debug.log`)
+- Frontend Logs: `frontend\frontend.log`
+
+### Stopping Services
+- Run `.\stop.bat`
+
+## File Structure
+
+```
+Roddle/
+├── backend/
+│   ├── server.py              # Main FastAPI application (with Global Lock)
+│   ├── ollama_llm.py          # Ollama LLM client
+│   ├── start-backend-with-log.bat  # Log wrapper script
+│   └── backend.log            # Timestamped server logs
+├── frontend/
+│   ├── src/
+│   │   ├── pages/Gampage.js
+│   │   └── ...
+│   ├── start-frontend-with-log.bat  # Log wrapper script
+│   └── frontend.log          # Timestamped build logs
+├── dev.bat                   # Development startup script
+├── start.bat                 # Background startup script
+├── stop.bat                  # Cleanup script
+├── docker-compose.yml        # Docker services configuration
+├── context.txt               # This file
+├── README.md                 # Project documentation
+└── FINAL_FIXES_SUMMARY.md    # Detail of recent bug fixes
+```
+
+## Key Features Implementation
+
+### Daily Riddle System
+- **Single Generation**: Global lock ensures exactly one set of riddles per day.
+- **AI Powered**: Riddles generated dynamically by Ollama (neural-chat).
+- **Encrypted**: Riddles and answers stored encrypted in DB.
+
+### Difficulty Levels
+1. **Easy** - 5 guesses, 10 base points
+2. **Medium** - 4 guesses, 20 base points
+3. **Hard** - 3 guesses, 40 base points
+4. **Very Hard** - 2 guesses, 80 base points (Premium)
+5. **Insane** - 1 guess, 150 base points (Premium)
+
+## Known Issues & Solutions
+
+### Issue: "10 Riddles generated"
+**Status**: RESOLVED (Dec 10, 2024)
+**Solution**: Global lock in `server.py` prevented race condition.
+
+### Issue: Backend won't fix/connect to Ollama
+**Solution**: Ensure Docker container `riddle-ollama` is running and healthy. Check `backend.log`.
+
+## Next Steps / TODO
+
+1. **Performance**: Monitor Ollama generation time on lower-end hardware.
+2. **Testing**: Add automated tests for the locking mechanism.
+3. **Deployment**: Create production Docker setup.
+4. **Features**: Add friend system, achievements, daily streaks.
+
+---
+Last Updated: December 10, 2024
+Status: ✅ WORKING - Multi-user riddle game fully functional with Ollama
