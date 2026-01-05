@@ -33,6 +33,13 @@ A simplified, standalone version of the Roddle Riddle Game.
    ```
    Access at `http://localhost:3000`.
 
+3. **Default Model**
+   The default model should be `tinyllama`, however github has a size limit of 100MB.
+   The game will use a fallback of fixed riddles without the model. You must go to settings and add the model URL to use it.
+   ```
+   https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf
+   ```
+
 ## Building for Production (Standalone .exe compatibility)
 
 The goal is to bundle this into a single executable.
