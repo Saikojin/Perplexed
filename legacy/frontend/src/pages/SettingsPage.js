@@ -313,18 +313,11 @@ export default function SettingsPage({ user, setUser }) {
                                         onChange={handleChange}
                                         className="w-full mt-1 bg-black/50 border border-white/20 text-white rounded-md p-2"
                                     >
-                                        <option value="">Use Server Default</option>
+                                        <option value="">Use Server Default (neural-chat)</option>
                                         {availableModels.map((m, i) => (
-                                            <option key={i} value={m.name || m}>
-                                                {m.name || m} {m.active ? "(Currently Active)" : ""}
-                                            </option>
+                                            <option key={i} value={m.name || m}>{m.name || m}</option>
                                         ))}
                                     </select>
-                                    {availableModels.find(m => m.active) && (
-                                        <p className="text-xs text-green-400 mt-1">
-                                            Current Loaded Model: <span className="font-mono">{availableModels.find(m => m.active).name}</span>
-                                        </p>
-                                    )}
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="pull_model" className="text-xs text-slate-400">Download New Model (Ollama)</Label>

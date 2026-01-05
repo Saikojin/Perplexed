@@ -1,0 +1,63 @@
+import os
+import random
+try:
+    from llama_cpp import Llama
+except ImportError:
+    Llama = None
+
+MODEL_PATH = "models/model.gguf"
+
+class LLMEngine:
+    def __init__(self):
+        self.model = None
+        self.mock_mode = True
+        
+        if Llama and os.path.exists(MODEL_PATH):
+            print(f"Loading model from {MODEL_PATH}...")
+            try:
+                self.model = Llama(
+                    model_path=MODEL_PATH,
+                    n_ctx=2048,
+                    n_threads=4
+                )
+                self.mock_mode = False
+                print("Model loaded successfully.")
+            except Exception as e:
+                print(f"Failed to load model: {e}. Falling back to mock mode.")
+        else:
+            print("Llama-cpp not installed or model not found. Using Mock mode.")
+
+    def generate_riddle(self, difficulty="medium", topic=None):
+        if self.mock_mode:
+            return self._generate_mock_riddle(difficulty)
+        
+        # Real generation logic would go here
+        # For now, let's keep it simple or implement a basic prompt if we had the model
+        prompt = self._build_prompt(difficulty, topic)
+        output = self.model(prompt, max_tokens=256, stop=["Question:", "\n"], echo=False)
+        return self._parse_output(output)
+
+    def _generate_mock_riddle(self, difficulty):
+        # A few pre-canned riddles
+        riddles = [
+            {"content": "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?", "answer": "echo"},
+            {"content": "The more of this there is, the less you see. What is it?", "answer": "darkness"},
+            {"content": "I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?", "answer": "map"},
+            {"content": "I am taken from a mine, and shut up in a wooden case, from which I am never released, and yet I am used by almost every person. What am I?", "answer": "pencil_lead"}
+        ]
+        r = random.choice(riddles)
+        return {
+            "riddle": r["content"],
+            "answer": r["answer"],
+            "difficulty": difficulty
+        }
+
+    def _build_prompt(self, difficulty, topic):
+        return f"Generate a {difficulty} riddle about {topic or 'anything'}. Format: Riddle: [text] Answer: [word]"
+
+    def _parse_output(self, output):
+        text = output['choices'][0]['text']
+        # Very basic parsing
+        return {"riddle": text, "answer": "unknown", "difficulty": "generated"}
+
+llm_engine = LLMEngine()
