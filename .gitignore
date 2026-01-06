@@ -5,6 +5,11 @@ Thumbs.db
 # Project
 backend/llm.py
 
+
+
+
+
+
 backend/models/*.gguf
 backend/models/metadata.json
 backend/__pycache__/
