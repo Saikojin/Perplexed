@@ -5,6 +5,15 @@ import { toast } from 'sonner';
 import { Brain, Trophy, LogOut, Users, Sparkles, Crown, Loader2, Settings } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import PremiumModal from '../components/PremiumModal';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -23,6 +32,26 @@ export default function GamePage({ user, setUser }) {
   const [dailyStatus, setDailyStatus] = useState(null);
   const [loadingMessage, setLoadingMessage] = useState('');
   const gameRef = useRef(null);
+
+  const [showModelAlert, setShowModelAlert] = useState(false);
+
+  useEffect(() => {
+    checkModels();
+  }, []);
+
+  const checkModels = async () => {
+    try {
+      const res = await fetch(`${API}/models/available`);
+      const models = await res.json();
+      // If list is empty or only contains legacy placeholders that aren't real
+      const hasRealModel = models.some(m => m.type === 'local' && m.name !== 'legacy-model');
+      if (!hasRealModel) {
+        setShowModelAlert(true);
+      }
+    } catch (e) {
+      console.error("Failed to check models", e);
+    }
+  };
 
   const difficulties = [
     { id: 'easy', name: 'Easy', guesses: 5, color: 'from-green-500 to-emerald-600', premium: false },
@@ -422,6 +451,27 @@ export default function GamePage({ user, setUser }) {
           user={user}
           setUser={setUser}
         />
+
+        <AlertDialog open={showModelAlert} onOpenChange={setShowModelAlert}>
+          <AlertDialogContent className="bg-slate-900 border-slate-700 text-slate-100">
+            <AlertDialogHeader>
+              <AlertDialogTitle className="text-xl font-bold text-white">No AI Model Detected</AlertDialogTitle>
+              <AlertDialogDescription className="text-slate-300">
+                To play Perplexed, you need to have a local AI model downloaded.
+                <br /><br />
+                Please, go to the Settings page to download a model (like Qwen or TinyLlama) to get started!
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogAction
+                onClick={() => navigate('/settings')}
+                className="bg-blue-600 hover:bg-blue-700 text-white"
+              >
+                Go to Settings
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     );
   }
