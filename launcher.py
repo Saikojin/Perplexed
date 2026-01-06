@@ -6,9 +6,23 @@ import webview
 import socket
 import time
 
-# Ensure we can import from backend
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "backend"))
+# Handle path resolution for both dev and PyInstaller environment
+if getattr(sys, 'frozen', False):
+    # Running in a PyInstaller bundle
+    # In PyInstaller v6+, contents are in _internal for one-dir mode
+    base_dir = os.path.dirname(sys.executable)
+    internal_dir = os.path.join(base_dir, '_internal')
+    if os.path.exists(internal_dir):
+        base_dir = internal_dir
+    elif hasattr(sys, '_MEIPASS'):
+        base_dir = sys._MEIPASS
+else:
+    # Running in a normal Python environment
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Add the base dir (app root) and backend dir to sys.path
+sys.path.append(base_dir)
+sys.path.append(os.path.join(base_dir, "backend"))
 
 from backend.main import app
 
