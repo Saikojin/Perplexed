@@ -10,7 +10,7 @@ A simplified, standalone version of the Roddle Riddle Game.
 ## Directory Structure
 - `backend/`: FastAPI application + SQLite + LLM logic.
 - `frontend/`: React source code.
-- `legacy/`: Complete backup of the original microservices-based project (Docker, Mongo, Ollama).
+
 
 ## How to Run
 
@@ -40,15 +40,8 @@ A simplified, standalone version of the Roddle Riddle Game.
    https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf
    ```
  
-## Building for Production (Standalone .exe compatibility)
 
-The goal is to bundle this into a single executable.
-1. Build frontend: `cd frontend && npm run build`
-2. Move content of `frontend/build` to `backend/static`.
-3. Use PyInstaller on `backend/main.py`.
 
-## Legacy Project
-The original project files are preserved in the `legacy/` folder for reference.
 
 ## Secret Sauce (LLM Logic)
 The core logic for riddle generation is contained in `backend/llm.py`. 
@@ -66,3 +59,42 @@ class LLMEngine:
         # Return a dictionary with 'riddle' and 'answer'
         return {"riddle": "Example riddle", "answer": "example"}
 ```
+
+## Compilation Steps
+
+To compile the project into a standalone `.exe` (Windows) for distribution:
+
+1.  **Prerequisites**:
+    Ensure you have the backend virtual environment active and dependencies installed:
+    ```bash
+    .\run.bat
+    # (Ctrl+C to stop the server, but keep the env ready or activate it manually)
+    ```
+
+2.  **Install Build Tools**:
+    ```bash
+    pip install pyinstaller
+    ```
+
+3.  **Frontend Build**:
+    Compile the React frontend into static assets:
+    ```bash
+    cd frontend
+    npm run build
+    ```
+    *Note: The build output will be automatically picked up if `backend/static` is configured correctly, or ensure the build artifacts are moved to `backend/static`.*
+
+4.  **Run Build Script**:
+    Use the provided PyInstaller spec file to bundle everything:
+    ```bash
+    pyinstaller build.spec --clean --noconfirm
+    ```
+
+5.  **Output**:
+    -   **Folder**: `dist/Perplexed/` (Contains the uncompressed executable and dependencies)
+    -   **Executable**: `dist/Perplexed/Perplexed.exe`
+    -   **Zip**: `dist/Perplexed.zip` (If you manually zip it or have a script for it)
+
+    **Important**: Do not use the `build/` folder; it contains temporary compilation files.
+
+

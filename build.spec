@@ -23,6 +23,9 @@ hidden_imports = backend_imports + [
     'uvicorn.lifespan.on',
     'engineio.async_drivers.threading',
     'passlib.handlers.bcrypt',
+    # Explicitly add backend modules if collect_submodules misses them due to missing __init__.py
+    'backend.database',
+    'backend.llm',
 ]
 
 # Analysis step
@@ -31,10 +34,10 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[
-        ('backend/static', 'backend/static'),  # Include static frontend files
-        ('backend/models', 'backend/models'),  # Include models directory (might be large!)
-        # If models are too large, we might want to EXCLUDE them and have user place them next to exe
-        # For now, we bundle them as requested for a standalone "everything included" feel
+        ('backend/static', 'backend/static'),
+        ('backend/models', 'backend/models'),
+        # Important: Ensure source files are copied if we rely on dynamic imports or file operations
+        # But for imports, hiddenimports should suffice.
     ],
     hiddenimports=hidden_imports,
     hookspath=[],
@@ -59,8 +62,8 @@ exe = EXE(
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False, # Set to True if you want to see the console for debugging
-    disable_windowed_traceback=False,
+    console=False, 
+    disable_windowed_traceback=False, # Set to False for production
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,

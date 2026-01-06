@@ -5,18 +5,22 @@ Thumbs.db
 # Project
 backend/llm.py
 
-
-
-
-
-
+# Models & Data
 backend/models/*.gguf
 backend/models/metadata.json
+roddle.db
+
+# Python
 backend/__pycache__/
 backend/venv/
-roddle.db
+*.spec
 
 # Node
 node_modules/
 frontend/build/
 frontend/node_modules/
+
+# Build Output
+dist/
+build/
+*.zip
