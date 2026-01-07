@@ -59,7 +59,7 @@ export default function PremiumModal({ isOpen, onClose, user, setUser }) {
               <p className="text-sm text-slate-400">Cryptic riddles with 2 guesses</p>
             </div>
           </div>
-          
+
           <div className="flex items-start gap-3">
             <Check className="w-5 h-5 text-green-400 mt-1" />
             <div>
@@ -67,18 +67,18 @@ export default function PremiumModal({ isOpen, onClose, user, setUser }) {
               <p className="text-sm text-slate-400">Mind-bending challenges with only 1 guess</p>
             </div>
           </div>
-          
+
           <div className="flex items-start gap-3">
             <Check className="w-5 h-5 text-green-400 mt-1" />
             <div>
-              <h4 className="font-semibold text-white">Higher Score Multipliers</h4>
-              <p className="text-sm text-slate-400">Earn up to 150x base points</p>
+              <h4 className="font-semibold text-white">Exclusive Themes</h4>
+              <p className="text-sm text-slate-400">Unlock Cyberpunk, Fantasy, and more</p>
             </div>
           </div>
         </div>
 
         <div className="bg-white/10 rounded-lg p-4 text-center mb-4">
-          <div className="text-4xl font-bold text-white mb-1">$5.00</div>
+          <div className="text-4xl font-bold text-white mb-1">$10.00</div>
           <div className="text-slate-400 text-sm">One-time payment • Lifetime access</div>
         </div>
 
@@ -88,11 +88,11 @@ export default function PremiumModal({ isOpen, onClose, user, setUser }) {
           className="w-full bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white font-bold py-6 text-lg"
           disabled={loading}
         >
-          {loading ? 'Processing...' : 'Unlock Now (Mock Payment)'}
+          {loading ? 'Processing...' : 'Unlock Now'}
         </Button>
 
         <p className="text-xs text-slate-400 text-center">
-          This is a mock payment. In production, real payment processing would be integrated.
+          Secure payment processing
         </p>
       </DialogContent>
     </Dialog>

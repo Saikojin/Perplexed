@@ -154,7 +154,10 @@ export default function GamePage({ user, setUser }) {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({ difficulty: difficulty.id })
+        body: JSON.stringify({
+          difficulty: difficulty.id,
+          theme: user?.settings?.theme || "default"
+        })
       });
 
       const data = await res.json();
@@ -216,7 +219,7 @@ export default function GamePage({ user, setUser }) {
         setGameWon(true);
         setCorrectAnswer(data.answer);
         toast.success(`Correct! +${data.score} points 🎉`);
-        setUser(prev => ({ ...prev, total_score: prev.total_score + data.score }));
+        setUser(prev => ({ ...prev, total_score: (prev.total_score || 0) + data.score }));
       } else {
         const remaining = currentRiddle.max_guesses - newGuesses.length;
         if (remaining > 0) {
@@ -317,7 +320,7 @@ export default function GamePage({ user, setUser }) {
                 <Brain className="w-7 h-7 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white" style={{ fontFamily: 'Space Grotesk' }}>Riddle Master</h1>
+                <h1 className="text-2xl font-bold text-white" style={{ fontFamily: 'Space Grotesk' }}>Perplexed</h1>
                 <p className="text-slate-400 text-sm">Welcome, {user.username}</p>
               </div>
             </div>
@@ -325,7 +328,7 @@ export default function GamePage({ user, setUser }) {
             <div className="flex items-center gap-3">
               <div className="glass-card px-4 py-2 flex items-center gap-2">
                 <Trophy className="w-5 h-5 text-yellow-400" />
-                <span className="text-white font-semibold" data-testid="user-total-score">{user.total_score}</span>
+                <span className="text-white font-semibold" data-testid="user-total-score">{user?.total_score || 0}</span>
               </div>
               {user.premium && (
                 <div className="glass-card px-4 py-2 flex items-center gap-2">
@@ -382,9 +385,9 @@ export default function GamePage({ user, setUser }) {
                 <Card
                   key={diff.id}
                   data-testid={`difficulty-${diff.id}`}
-                  className={`glass-card p-6 cursor-pointer transition-all hover:scale-105 hover:shadow-2xl relative overflow-hidden ${isLocked || isCompleted ? 'opacity-60' : ''
-                    } ${isCompleted ? 'border-2 border-green-500' : ''}`}
-                  onClick={() => !isLocked && !isCompleted && startGame(diff)}
+                  className={`glass-card p-6 cursor-pointer transition-all hover:scale-105 hover:shadow-2xl relative overflow-hidden ${isLocked && !diff.premium ? 'opacity-60' : ''
+                    } ${(isLocked && diff.premium && !user.premium) ? 'border border-yellow-500/30' : ''} ${isCompleted ? 'border-2 border-green-500' : ''}`}
+                  onClick={() => !isCompleted && !(isLocked && !diff.premium) && startGame(diff)}
                 >
                   {isLocked && diff.premium && !user.premium && (
                     <div className="absolute top-2 right-2">
@@ -496,7 +499,7 @@ export default function GamePage({ user, setUser }) {
             </div>
             <div className="glass-card px-4 py-2 flex items-center gap-2">
               <Trophy className="w-5 h-5 text-yellow-400" />
-              <span className="text-white font-semibold" data-testid="user-score-in-game">{user.total_score}</span>
+              <span className="text-white font-semibold" data-testid="user-score-in-game">{user?.total_score || 0}</span>
             </div>
           </div>
         </div>
@@ -518,6 +521,17 @@ export default function GamePage({ user, setUser }) {
         {/* Tile Grid - All Guess Rows */}
         <div className="mb-8" data-testid="tile-grid">
           {[...Array(currentRiddle.max_guesses)].map((_, rowIndex) => renderTileRow(rowIndex))}
+
+          {/* Reveal answer if lost */}
+          {!gameWon && guesses.length >= currentRiddle.max_guesses && (
+            <div className="flex justify-center gap-2 mb-3 mt-4 animate-in fade-in slide-in-from-top-2">
+              {[...correctAnswer].map((letter, i) => (
+                <div key={i} className="letter-tile correct text-white ring-2 ring-red-500/50">
+                  {letter}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Instructions */}

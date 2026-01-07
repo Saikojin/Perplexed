@@ -42,6 +42,9 @@ export default function AuthPage({ setUser }) {
         localStorage.setItem('token', data.token);
         setUser(data.user);
         toast.success(isLogin ? 'Welcome back!' : 'Account created!');
+        if (data.warning) {
+          toast.warning(data.warning);
+        }
       } else {
         console.warn('Authentication failed:', data);
         toast.error(data.detail || 'Authentication failed');
@@ -67,7 +70,7 @@ export default function AuthPage({ setUser }) {
           </div>
 
           <h1 className="text-4xl font-bold text-center mb-2 text-white" style={{ fontFamily: 'Space Grotesk' }}>
-            Riddle Master
+            Perplexed
           </h1>
           <p className="text-center text-slate-300 mb-8">
             Challenge your mind with AI-generated riddles

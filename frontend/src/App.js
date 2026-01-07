@@ -85,6 +85,11 @@ function App() {
       } else {
         root.style.removeProperty('--app-bg');
       }
+    } else {
+      // Reset to defaults if no user settings (e.g. logout or new user)
+      root.style.removeProperty('--primary');
+      root.style.removeProperty('--accent');
+      root.style.removeProperty('--app-bg');
     }
   }, [user]);
 

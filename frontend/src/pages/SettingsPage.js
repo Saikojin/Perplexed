@@ -4,9 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
 import { ArrowLeft, Save, Crown, Palette } from "lucide-react";
 import { themes } from "../config/themes";
+import versionData from "../version.json";
+
+import PremiumModal from '../components/PremiumModal';
 
 export default function SettingsPage({ user, setUser }) {
     const navigate = useNavigate();
@@ -14,6 +18,8 @@ export default function SettingsPage({ user, setUser }) {
     const [availableModels, setAvailableModels] = useState([]);
     const [modelToPull, setModelToPull] = useState("");
     const [pullingModel, setPullingModel] = useState(false);
+    const [downloadStatus, setDownloadStatus] = useState({});
+    const [showPremiumModal, setShowPremiumModal] = useState(false);
 
     // API Keys state (separate to avoid showing existing keys)
     const [apiKeys, setApiKeys] = useState({
@@ -49,6 +55,12 @@ export default function SettingsPage({ user, setUser }) {
                 if (res.ok) {
                     const data = await res.json();
                     setAvailableModels(data || []);
+
+                    // If user has no preferred model set, default the dropdown to the currently active one
+                    const active = data.find(m => m.active);
+                    if (active && (!user.settings || !user.settings.preferred_model)) {
+                        setSettings(prev => ({ ...prev, preferred_model: active.name }));
+                    }
                 }
             } catch (error) {
                 console.error("Failed to fetch models", error);
@@ -56,6 +68,45 @@ export default function SettingsPage({ user, setUser }) {
         };
         fetchModels();
     }, [user]);
+
+    // Poll for download status
+    useEffect(() => {
+        let interval;
+        if (pullingModel) {
+            interval = setInterval(async () => {
+                try {
+                    const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/models/download-status`);
+                    const data = await res.json();
+                    setDownloadStatus(data);
+
+                    // Check if current download completed
+                    if (modelToPull) {
+                        // Extract filename logic similar to backend
+                        let filename = modelToPull.split("/").pop().split("?")[0];
+                        if (!filename.endsWith(".gguf")) filename += ".gguf";
+
+                        const status = data[filename];
+                        if (status && status.status === 'completed') {
+                            setPullingModel(false);
+                            toast.success(`Download complete: ${filename}`);
+                            setModelToPull("");
+                            // Refresh models
+                            const modelsRes = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/models/available`);
+                            if (modelsRes.ok) {
+                                setAvailableModels(await modelsRes.json());
+                            }
+                        } else if (status && status.status === 'error') {
+                            setPullingModel(false);
+                            toast.error(`Download failed: ${status.error}`);
+                        }
+                    }
+                } catch (e) {
+                    console.error("Polling error", e);
+                }
+            }, 1000);
+        }
+        return () => clearInterval(interval);
+    }, [pullingModel, modelToPull]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -93,7 +144,7 @@ export default function SettingsPage({ user, setUser }) {
     const handlePullModel = async () => {
         if (!modelToPull) return;
         setPullingModel(true);
-        toast.info(`Starting pull for ${modelToPull}... this may take a while.`);
+        // toast.info(`Starting pull for ${modelToPull}... this may take a while.`); // Removed to prevent double toast
         try {
             const token = localStorage.getItem('token');
             const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/models/pull`, {
@@ -105,16 +156,16 @@ export default function SettingsPage({ user, setUser }) {
                 body: JSON.stringify({ model_name: modelToPull })
             });
             if (res.ok) {
-                toast.success(`Started pulling ${modelToPull}. Check available list later.`);
-                setModelToPull("");
+                // Toast handled by completion or start, strictly one
+                toast.info(`Started downloading ${modelToPull}...`);
+                // setModelToPull(""); // Keep it to track progress key
             } else {
                 toast.error("Failed to trigger model pull");
             }
         } catch (e) {
             toast.error("Network error pulling model");
-        } finally {
-            setPullingModel(false);
         }
+        // Do not setPullingModel(false) here, wait for polling to finish or error
     };
 
     const handleSave = async (e) => {
@@ -175,7 +226,17 @@ export default function SettingsPage({ user, setUser }) {
                 <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
                     Settings
                 </h1>
-                <div className="w-24"></div> {/* Spacer for centering */}
+                <div className="flex items-center gap-2">
+                    {!user?.premium && (
+                        <Button
+                            onClick={() => setShowPremiumModal(true)}
+                            className="bg-gradient-to-r from-yellow-500 to-amber-600 text-white hover:from-yellow-600 hover:to-amber-700"
+                        >
+                            <Crown className="w-4 h-4 mr-2" />
+                            Go Premium
+                        </Button>
+                    )}
+                </div>
             </div>
 
             {/* Theme Selector */}
@@ -313,33 +374,63 @@ export default function SettingsPage({ user, setUser }) {
                                         onChange={handleChange}
                                         className="w-full mt-1 bg-black/50 border border-white/20 text-white rounded-md p-2"
                                     >
-                                        <option value="">Use Server Default</option>
+                                        <option value="">
+                                            Use Server Default {availableModels.find(m => m.active) ? `(Active: ${availableModels.find(m => m.active).name})` : ""}
+                                        </option>
                                         {availableModels.map((m, i) => (
                                             <option key={i} value={m.name || m}>
-                                                {m.name || m} {m.active ? "(Currently Active)" : ""}
+                                                {m.name || m} {m.active ? "(Currently Loaded)" : ""}
                                             </option>
                                         ))}
                                     </select>
-                                    {availableModels.find(m => m.active) && (
-                                        <p className="text-xs text-green-400 mt-1">
-                                            Current Loaded Model: <span className="font-mono">{availableModels.find(m => m.active).name}</span>
+                                    {availableModels.find(m => m.active) && settings.preferred_model === "" && (
+                                        <p className="text-xs text-slate-400 mt-1">
+                                            Currently using: <span className="font-mono text-blue-400">{availableModels.find(m => m.active).name}</span>
                                         </p>
                                     )}
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="pull_model" className="text-xs text-slate-400">Download New Model (Ollama)</Label>
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 items-center">
                                         <Input
                                             id="pull_model"
                                             placeholder="e.g. llama3, mistral"
                                             value={modelToPull}
                                             onChange={(e) => setModelToPull(e.target.value)}
                                             className="bg-black/50 border-white/20 text-white"
+                                            disabled={pullingModel}
                                         />
                                         <Button type="button" onClick={handlePullModel} disabled={pullingModel} variant="secondary">
-                                            {pullingModel ? "Pulling..." : "Pull"}
+                                            {pullingModel ? "Downloading..." : "Pull"}
                                         </Button>
                                     </div>
+                                    {pullingModel && modelToPull && (
+                                        <div className="mt-2 text-xs text-blue-400 flex items-center gap-2">
+                                            {(() => {
+                                                let filename = modelToPull.split("/").pop().split("?")[0];
+                                                if (!filename.endsWith(".gguf")) filename += ".gguf";
+                                                const status = downloadStatus[filename];
+                                                if (status) {
+                                                    const mb = (status.progress / (1024 * 1024)).toFixed(1);
+                                                    const total = (status.total / (1024 * 1024)).toFixed(1);
+                                                    const pct = status.total > 0 ? Math.round((status.progress / status.total) * 100) : 0;
+                                                    return (
+                                                        <div className="w-full space-y-1 mt-2">
+                                                            <div className="flex justify-between text-xs text-blue-400">
+                                                                <span className="flex items-center gap-2">
+                                                                    <div className="w-3 h-3 rounded-full border-2 border-blue-400 border-t-transparent animate-spin" />
+                                                                    Downloading...
+                                                                </span>
+                                                                <span>{pct}% ({mb}MB / {total}MB)</span>
+                                                            </div>
+                                                            <Progress value={pct} className="h-1.5" />
+                                                        </div>
+                                                    );
+                                                }
+                                                return <span>Initializing...</span>;
+                                            })()}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -391,9 +482,46 @@ export default function SettingsPage({ user, setUser }) {
                 </CardContent>
             </Card>
 
-            <div className="mt-8 p-4 max-w-2xl text-center text-sm text-gray-500">
-                <p>Unlock Premium for exclusive themes and features!</p>
-            </div>
-        </div >
+
+
+            <Card className="w-full max-w-2xl bg-black/40 border-white/10 backdrop-blur-md text-white shadow-2xl mt-8">
+                <CardHeader>
+                    <CardTitle className="text-xl">About Perplexed</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                    <div className="flex justify-between items-center border-b border-white/10 pb-2">
+                        <span className="text-slate-400">Version</span>
+                        <span className="font-mono text-sm bg-white/10 px-2 py-1 rounded">{versionData.version}</span>
+                    </div>
+                    <div className="flex justify-between items-center pt-2">
+                        <span className="text-slate-400">Links</span>
+                        <div className="flex gap-4">
+                            <a
+                                href="https://github.com/Saikojin/Perplexed"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1"
+                            >
+                                GitHub
+                            </a>
+                            <a
+                                href="https://opensource.org/licenses/MIT"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1"
+                            >
+                                MIT License
+                            </a>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+            <PremiumModal
+                isOpen={showPremiumModal}
+                onClose={() => setShowPremiumModal(false)}
+                user={user}
+                setUser={setUser}
+            />
+        </div>
     );
 }
