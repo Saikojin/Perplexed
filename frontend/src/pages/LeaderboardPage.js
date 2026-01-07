@@ -13,6 +13,7 @@ export default function LeaderboardPage({ user }) {
   const navigate = useNavigate();
   const [globalLeaderboard, setGlobalLeaderboard] = useState([]);
   const [friendsLeaderboard, setFriendsLeaderboard] = useState([]);
+  const [pendingRequests, setPendingRequests] = useState([]);
   const [friendUsername, setFriendUsername] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -24,28 +25,32 @@ export default function LeaderboardPage({ user }) {
     try {
       const token = localStorage.getItem('token');
 
-      const [globalRes, friendsRes] = await Promise.all([
-        fetch(`${API}/leaderboard/global`, {
-          headers: { 'Authorization': `Bearer ${token}` }
-        }),
-        fetch(`${API}/leaderboard/friends`, {
-          headers: { 'Authorization': `Bearer ${token}` }
-        })
+      const [globalRes, friendsRes, requestsRes] = await Promise.all([
+        fetch(`${API}/leaderboard/global`, { headers: { 'Authorization': `Bearer ${token}` } }),
+        fetch(`${API}/leaderboard/friends`, { headers: { 'Authorization': `Bearer ${token}` } }),
+        fetch(`${API}/friends/requests/pending`, { headers: { 'Authorization': `Bearer ${token}` } })
       ]);
 
       const globalData = await globalRes.json();
       const friendsData = await friendsRes.json();
 
+      if (requestsRes.ok) {
+        const reqData = await requestsRes.json();
+        setPendingRequests(reqData);
+      } else {
+        setPendingRequests([]);
+      }
+
       setGlobalLeaderboard(globalData);
       setFriendsLeaderboard(friendsData);
     } catch (error) {
-      toast.error('Failed to load leaderboards');
+      toast.error('Refreshed data');
     } finally {
       setLoading(false);
     }
   };
 
-  const addFriend = async () => {
+  const sendRequest = async () => {
     if (!friendUsername.trim()) {
       toast.error('Please enter a username');
       return;
@@ -53,7 +58,7 @@ export default function LeaderboardPage({ user }) {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`${API}/friends/add`, {
+      const res = await fetch(`${API}/friends/request`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,14 +68,36 @@ export default function LeaderboardPage({ user }) {
       });
 
       if (res.ok) {
-        toast.success('Friend added!');
+        toast.success('Friend request sent!');
         setFriendUsername('');
-        fetchLeaderboards();
       } else {
         const data = await res.json();
-        toast.error(data.detail || 'Failed to add friend');
+        toast.error(data.detail || 'Failed to send request');
       }
     } catch (error) {
+      toast.error('Network error');
+    }
+  };
+
+  const handleRequest = async (requestId, action) => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch(`${API}/friends/requests/${action}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ request_id: requestId })
+      });
+
+      if (res.ok) {
+        toast.success(`Request ${action}ed`);
+        fetchLeaderboards();
+      } else {
+        toast.error('Action failed');
+      }
+    } catch (e) {
       toast.error('Network error');
     }
   };
@@ -187,18 +214,35 @@ export default function LeaderboardPage({ user }) {
                   placeholder="Enter username"
                   value={friendUsername}
                   onChange={(e) => setFriendUsername(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && addFriend()}
+                  onKeyPress={(e) => e.key === 'Enter' && sendRequest()}
                   className="bg-white/10 border-white/20 text-white placeholder:text-slate-400"
                 />
                 <Button
                   data-testid="add-friend-button"
-                  onClick={addFriend}
+                  onClick={sendRequest}
                   className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
                 >
-                  Add
+                  Send Request
                 </Button>
               </div>
             </Card>
+
+            {pendingRequests.length > 0 && (
+              <div className="mb-6">
+                <h3 className="text-white font-semibold mb-3">Pending Requests</h3>
+                <div className="space-y-2">
+                  {pendingRequests.map(req => (
+                    <Card key={req.id} className="p-3 bg-white/5 border-white/10 flex justify-between items-center">
+                      <span className="text-white">{req.sender_username} wants to be friends</span>
+                      <div className="flex gap-2">
+                        <Button size="sm" className="bg-green-600 hover:bg-green-700" onClick={() => handleRequest(req.id, 'accept')}>Accept</Button>
+                        <Button size="sm" variant="destructive" onClick={() => handleRequest(req.id, 'reject')}>Reject</Button>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {loading ? (
               <div className="text-center py-12 text-white">Loading...</div>
